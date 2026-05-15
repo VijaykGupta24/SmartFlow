@@ -1,0 +1,91 @@
+/* ============================================================
+   variables.css — SmartFlow AI Traffic Management
+   Design tokens: colours, typography, spacing, radii, shadows
+   ============================================================ */
+
+:root {
+
+  /* ── Palette ── */
+  --navy:    #0B2545;
+  --blue:    #1368AA;
+  --cyan:    #22D3EE;
+  --green:   #22C55E;
+  --amber:   #F59E0B;
+  --red:     #EF4444;
+  --purple:  #A78BFA;
+  --white:   #FFFFFF;
+  --slate:   #64748B;
+  --light:   #F1F5F9;
+  --border:  #CBD5E1;
+  --muted:   #475569;
+  --text:    #0F172A;
+
+  /* ── Semantic state colours ── */
+  --status-critical-bg:   #FEE2E2;
+  --status-critical-text: #DC2626;
+  --status-high-bg:       #FEF3C7;
+  --status-high-text:     #D97706;
+  --status-normal-bg:     #DCFCE7;
+  --status-normal-text:   #16A34A;
+  --status-low-bg:        #DBEAFE;
+  --status-low-text:      #1D4ED8;
+
+  /* ── Alert tints ── */
+  --alert-critical-bg:     #FFF5F5;
+  --alert-critical-border: #FECACA;
+  --alert-warning-bg:      #FFFBEB;
+  --alert-warning-border:  #FDE68A;
+  --alert-info-bg:         #EFF6FF;
+  --alert-info-border:     #BFDBFE;
+  --alert-success-bg:      #F0FDF4;
+  --alert-success-border:  #BBF7D0;
+
+  /* ── Icon background tints ── */
+  --blue-bg:   #EFF6FF;
+  --amber-bg:  #FEF3C7;
+  --red-bg:    #FEE2E2;
+  --green-bg:  #DCFCE7;
+  --purple-bg: #F5F3FF;
+  --navy-bg:   #E8EEF6;
+
+  /* ── Typography ── */
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --fs-xs:  11px;
+  --fs-sm:  13px;
+  --fs-md:  15px;
+  --fs-lg:  18px;
+  --fs-xl:  22px;
+  --fs-2xl: 26px;
+  --fs-3xl: 36px;
+  --fs-4xl: 44px;
+
+  /* ── Spacing scale ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  /* ── Border radius ── */
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+  --radius-pill: 50px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 2px 8px  rgba(11, 37, 69, 0.07);
+  --shadow-md:  0 2px 20px rgba(11, 37, 69, 0.08);
+  --shadow-lg:  0 8px 32px rgba(11, 37, 69, 0.14);
+
+  /* ── Transitions ── */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow:   0.4s ease;
+}

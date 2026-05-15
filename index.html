@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartFlow — AI Traffic Management · Jaipur</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets (load order matters) -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-icon">🚦</div>
+      <div class="brand-name">Smart<span>Flow</span></div>
+    </div>
+
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      <span class="live-label">LIVE — JAIPUR CITY GRID</span>
+    </div>
+
+    <div class="header-time" id="clock">--:--:--</div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       HERO STATS BAR
+  ═══════════════════════════════════════ -->
+  <section class="hero-bar">
+    <div class="hero-stat">
+      <div class="hero-num cyan" id="h-intersections">247</div>
+      <div class="hero-label">Live Intersections</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-num green" id="h-speed">38 <span class="hero-unit">km/h</span></div>
+      <div class="hero-label">Avg Speed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-num amber" id="h-density">74</div>
+      <div class="hero-label">Veh/km Density</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-num red" id="h-incidents">3</div>
+      <div class="hero-label">Active Incidents</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-num purple" id="h-decisions">48,312</div>
+      <div class="hero-label">AI Decisions Today</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-num green">99.2<span class="hero-unit">%</span></div>
+      <div class="hero-label">System Uptime</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       MAIN PAGE CONTENT
+  ═══════════════════════════════════════ -->
+  <main class="page">
+
+    <!-- ── ROW 1 : KEY METRICS ── -->
+    <h2 class="section-title">📊 City-Wide Performance</h2>
+    <div class="grid-4 section-gap">
+
+      <div class="metric-card" style="--accent-color: var(--green)">
+        <span class="metric-emoji">🚗</span>
+        <div class="metric-value" id="m-speed">38<span class="metric-unit">km/h</span></div>
+        <div class="metric-name">Avg Vehicle Speed</div>
+        <span class="metric-change change-up">↑ +4 from yesterday</span>
+      </div>
+
+      <div class="metric-card" style="--accent-color: var(--amber)">
+        <span class="metric-emoji">🔢</span>
+        <div class="metric-value" id="m-density">74<span class="metric-unit">v/km</span></div>
+        <div class="metric-name">Traffic Density</div>
+        <span class="metric-change change-down">↑ High — rerouting</span>
+      </div>
+
+      <div class="metric-card" style="--accent-color: var(--red)">
+        <span class="metric-emoji">⏱️</span>
+        <div class="metric-value" id="m-wait">42<span class="metric-unit">sec</span></div>
+        <div class="metric-name">Avg Wait Time</div>
+        <span class="metric-change change-neutral">→ Same as avg</span>
+      </div>
+
+      <div class="metric-card" style="--accent-color: var(--blue)">
+        <span class="metric-emoji">📈</span>
+        <div class="metric-value" id="m-thru">89<span class="metric-unit">%</span></div>
+        <div class="metric-name">Throughput Rate</div>
+        <span class="metric-change change-up">↑ +31% vs static signals</span>
+      </div>
+
+    </div>
+
+    <!-- ── ROW 2 : SIGNAL CONTROLLERS ── -->
+    <h2 class="section-title">🚦 Signal Controllers</h2>
+    <div class="signal-grid section-gap" id="signal-grid">
+
+      <div class="signal-card active" data-junction="0" onclick="App.selectJunction(0, this)">
+        <div class="signal-junction">Junction A1</div>
+        <div class="signal-lights">
+          <div class="bulb red"  id="bA1-r"></div>
+          <div class="bulb"      id="bA1-y"></div>
+          <div class="bulb"      id="bA1-g"></div>
+        </div>
+        <div class="signal-timer" id="t-A1">18</div>
+        <div class="signal-road">NH-8 × Ajmer Rd</div>
+        <div class="signal-mode mode-ai">AI Adaptive</div>
+      </div>
+
+      <div class="signal-card" data-junction="1" onclick="App.selectJunction(1, this)">
+        <div class="signal-junction">Junction B2</div>
+        <div class="signal-lights">
+          <div class="bulb"       id="bB2-r"></div>
+          <div class="bulb"       id="bB2-y"></div>
+          <div class="bulb green" id="bB2-g"></div>
+        </div>
+        <div class="signal-timer" id="t-B2">07</div>
+        <div class="signal-road">MI Road × Sansar Chand</div>
+        <div class="signal-mode mode-ai">AI Adaptive</div>
+      </div>
+
+      <div class="signal-card" data-junction="2" onclick="App.selectJunction(2, this)">
+        <div class="signal-junction">Junction C3</div>
+        <div class="signal-lights">
+          <div class="bulb"        id="bC3-r"></div>
+          <div class="bulb yellow" id="bC3-y"></div>
+          <div class="bulb"        id="bC3-g"></div>
+        </div>
+        <div class="signal-timer" id="t-C3">22</div>
+        <div class="signal-road">Tonk Rd × Civil Lines</div>
+        <div class="signal-mode mode-override">Override</div>
+      </div>
+
+      <div class="signal-card" data-junction="3" onclick="App.selectJunction(3, this)">
+        <div class="signal-junction">Junction D4</div>
+        <div class="signal-lights">
+          <div class="bulb"       id="bD4-r"></div>
+          <div class="bulb"       id="bD4-y"></div>
+          <div class="bulb green" id="bD4-g"></div>
+        </div>
+        <div class="signal-timer" id="t-D4">11</div>
+        <div class="signal-road">C-Scheme × Bhagwan Das</div>
+        <div class="signal-mode mode-ai">AI Adaptive</div>
+      </div>
+
+    </div>
+
+    <!-- ── ROW 3 : MAP + INTERSECTION DETAIL ── -->
+    <h2 class="section-title">🗺️ Live Traffic Map</h2>
+    <div class="grid-2-1 section-gap">
+
+      <!-- City Map Card -->
+      <div class="card">
+        <div class="map-toolbar">
+          <button class="map-btn on"  onclick="App.toggleLayer('signals', this)">🟢 Signals</button>
+          <button class="map-btn"     onclick="App.toggleLayer('density', this)">🔴 Density</button>
+          <button class="map-btn"     onclick="App.toggleLayer('violations', this)">⚠️ Violations</button>
+          <button class="map-btn"     onclick="App.toggleAmbuRoute(this)">🚑 Ambu Route</button>
+          <span class="map-info-label">247 intersections monitored</span>
+        </div>
+        <!-- SVG city map is injected by map.js -->
+        <div id="map-container"></div>
+      </div>
+
+      <!-- Intersection Detail Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon blue-bg">📍</div>
+          <div>
+            <div class="card-title">Intersection Detail</div>
+            <div class="card-subtitle" id="int-label">Junction A1 selected</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="dir-grid">
+            <div class="dir-item">
+              <div class="dir-name">North</div>
+              <div class="dir-val" id="dir-n">72%</div>
+              <div class="dir-bar"><div class="dir-fill" id="df-n" style="width:72%;background:var(--amber)"></div></div>
+            </div>
+            <div class="dir-item">
+              <div class="dir-name">South</div>
+              <div class="dir-val" id="dir-s">48%</div>
+              <div class="dir-bar"><div class="dir-fill" id="df-s" style="width:48%;background:var(--green)"></div></div>
+            </div>
+            <div class="dir-item">
+              <div class="dir-name">East</div>
+              <div class="dir-val" id="dir-e">88%</div>
+              <div class="dir-bar"><div class="dir-fill" id="df-e" style="width:88%;background:var(--red)"></div></div>
+            </div>
+            <div class="dir-item">
+              <div class="dir-name">West</div>
+              <div class="dir-val" id="dir-w">35%</div>
+              <div class="dir-bar"><div class="dir-fill" id="df-w" style="width:35%;background:var(--green)"></div></div>
+            </div>
+          </div>
+
+          <div class="rec-box">
+            <span class="rec-icon">🤖</span>
+            <span class="rec-text" id="rec-text">Extend east green phase by 12 seconds</span>
+          </div>
+
+          <!-- 30-min forecast -->
+          <div class="forecast-section">
+            <div class="forecast-heading">30-min Forecast</div>
+            <div class="forecast-row" id="forecast-bars">
+              <!-- bars injected by charts.js -->
+            </div>
+            <div class="forecast-labels" id="forecast-labels">
+              <!-- labels injected by charts.js -->
+            </div>
+            <div class="forecast-warning">⚠ Peak congestion expected in ~18 minutes</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── ROW 4 : ZONE TRAFFIC + ALERTS ── -->
+    <h2 class="section-title">📡 Zone Traffic &amp; Alerts</h2>
+    <div class="grid-2 section-gap">
+
+      <!-- Zone Traffic Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon amber-bg">🛣️</div>
+          <div>
+            <div class="card-title">Zone Traffic Load</div>
+            <div class="card-subtitle">Real-time vehicle density per corridor</div>
+          </div>
+        </div>
+        <div class="card-body" id="zone-traffic-body">
+          <!-- flow rows injected by zones.js -->
+        </div>
+      </div>
+
+      <!-- Alerts Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon red-bg">🚨</div>
+          <div>
+            <div class="card-title">Live Alerts <span class="count-badge" id="alert-count">3</span></div>
+            <div class="card-subtitle">Incidents and AI recommendations</div>
+          </div>
+        </div>
+        <div class="card-body" id="alert-feed">
+          <!-- alert items injected by alerts.js -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── ROW 5 : OPERATIONS TABS ── -->
+    <h2 class="section-title">🎛️ Operations Center</h2>
+    <div class="card section-gap">
+
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="App.openTab('violations', this)">⚠️ Violations <span class="count-badge">7</span></button>
+        <button class="tab-btn"        onclick="App.openTab('emergency', this)">🚑 Emergency</button>
+        <button class="tab-btn"        onclick="App.openTab('ai', this)">🤖 AI Brain</button>
+        <button class="tab-btn"        onclick="App.openTab('health', this)">💻 System Health</button>
+      </div>
+
+      <!-- Violations -->
+      <div id="tab-violations" class="tab-panel active" style="padding:20px 24px">
+        <div class="filter-row" id="viol-filters">
+          <button class="map-btn on" onclick="App.filterViolations('all', this)">All (7)</button>
+          <button class="map-btn"    onclick="App.filterViolations('red', this)">Red Light (3)</button>
+          <button class="map-btn"    onclick="App.filterViolations('speed', this)">Speeding (2)</button>
+          <button class="map-btn"    onclick="App.filterViolations('lane', this)">Lane / Wrong-way (2)</button>
+        </div>
+        <table class="viol-table">
+          <thead>
+            <tr>
+              <th>Time</th><th>Location</th><th>Type</th>
+              <th>Plate</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="viol-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Emergency -->
+      <div id="tab-emergency" class="tab-panel" style="padding:20px 24px">
+        <div id="emergency-body">
+          <!-- injected by emergency.js -->
+        </div>
+      </div>
+
+      <!-- AI Brain -->
+      <div id="tab-ai" class="tab-panel" style="padding:20px 24px">
+        <div id="ai-body">
+          <!-- injected by ai.js -->
+        </div>
+      </div>
+
+      <!-- System Health -->
+      <div id="tab-health" class="tab-panel" style="padding:20px 24px">
+        <div id="health-body">
+          <!-- injected by health.js -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    SmartFlow AI Traffic Management &middot; Jaipur City Grid &middot;
+    Powered by <span>Deep Reinforcement Learning + Computer Vision</span> &middot; &copy; 2025
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       DATA LAYER  (load first)
+  ═══════════════════════════════════════ -->
+  <script src="data/violations.js"></script>
+  <script src="data/junctions.js"></script>
+  <script src="data/zones.js"></script>
+  <script src="data/alerts.js"></script>
+  <script src="data/ai-modules.js"></script>
+
+  <!-- ═══════════════════════════════════════
+       MODULES  (depend on data)
+  ═══════════════════════════════════════ -->
+  <script src="js/map.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/signals.js"></script>
+  <script src="js/zones.js"></script>
+  <script src="js/alerts.js"></script>
+  <script src="js/emergency.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/health.js"></script>
+  <script src="js/violations.js"></script>
+
+  <!-- ═══════════════════════════════════════
+       APP BOOTSTRAP  (runs last)
+  ═══════════════════════════════════════ -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>

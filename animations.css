@@ -1,0 +1,113 @@
+/* ============================================================
+   animations.css — SmartFlow AI Traffic Management
+   All @keyframes and animation utility classes
+   ============================================================ */
+
+/* ──────────────────────────────────────────
+   KEYFRAMES
+────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes ambu-drive {
+  0%   { width: 12%; }
+  100% { width: 80%; }
+}
+
+@keyframes ambu-drive-2 {
+  0%   { width: 30%; }
+  100% { width: 65%; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes counter-tick {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); opacity: 0.6; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes signal-pulse {
+  0%, 100% { box-shadow: 0 0 16px currentColor, 0 0 32px rgba(0,0,0,0.3); }
+  50%       { box-shadow: 0 0 24px currentColor, 0 0 48px rgba(0,0,0,0.2); }
+}
+
+@keyframes car-h {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(520px); }
+}
+
+@keyframes car-v {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(280px); }
+}
+
+@keyframes bar-grow {
+  from { height: 0; }
+  to   { height: var(--target-height, 50%); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* ──────────────────────────────────────────
+   ANIMATION UTILITY CLASSES
+────────────────────────────────────────── */
+
+/* Live status dot */
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--green);
+  border-radius: var(--radius-full);
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* Generic fade-in on page load */
+.fade-in {
+  animation: fade-in-up 0.5s ease both;
+}
+
+.fade-in-delay-1 { animation-delay: 0.1s; }
+.fade-in-delay-2 { animation-delay: 0.2s; }
+.fade-in-delay-3 { animation-delay: 0.3s; }
+.fade-in-delay-4 { animation-delay: 0.4s; }
+
+/* Ambulance progress bar animations */
+.ambu-anim   { animation: ambu-drive   6s ease-in-out infinite alternate; }
+.ambu-anim-2 { animation: ambu-drive-2 9s ease-in-out infinite alternate; }
+
+/* Metric value update flash */
+.value-tick {
+  animation: counter-tick 0.3s ease;
+}
+
+/* Active signal bulb glow pulse */
+.bulb.red    { animation: signal-pulse 2s ease-in-out infinite; }
+.bulb.green  { animation: signal-pulse 2s ease-in-out infinite; }
+.bulb.yellow { animation: signal-pulse 1s ease-in-out infinite; }
+
+/* Skeleton shimmer for loading states */
+.skeleton {
+  background: linear-gradient(90deg, var(--light) 25%, #E8EEF4 50%, var(--light) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}

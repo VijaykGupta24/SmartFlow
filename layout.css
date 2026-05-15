@@ -1,0 +1,200 @@
+/* ============================================================
+   layout.css — SmartFlow AI Traffic Management
+   Page skeleton: body, header, hero bar, main grid, footer
+   ============================================================ */
+
+/* ── Body ── */
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(135deg, #E8F4FD 0%, #EFF6FF 50%, #F0FDF4 100%);
+  color: var(--text);
+}
+
+/* ── Site Header ── */
+.site-header {
+  background: var(--navy);
+  padding: 0 var(--sp-10);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 24px rgba(11, 37, 69, 0.3);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--cyan);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.brand-name {
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.brand-name span { color: var(--cyan); }
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 6px var(--sp-4);
+}
+
+.live-label {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 1px;
+}
+
+.header-time {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 2px;
+}
+
+/* ── Hero Stats Bar ── */
+.hero-bar {
+  background: var(--navy);
+  padding: 0 var(--sp-10) var(--sp-6);
+  display: flex;
+  justify-content: center;
+}
+
+.hero-stat {
+  flex: 1;
+  max-width: 220px;
+  text-align: center;
+  padding: var(--sp-4) var(--sp-5);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-stat:last-child { border-right: none; }
+
+.hero-num {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+  font-family: var(--font-mono);
+}
+
+.hero-num.cyan   { color: var(--cyan); }
+.hero-num.green  { color: var(--green); }
+.hero-num.amber  { color: var(--amber); }
+.hero-num.red    { color: var(--red); }
+.hero-num.purple { color: var(--purple); }
+
+.hero-unit {
+  font-size: 20px;
+  font-family: var(--font-mono);
+}
+
+.hero-label {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Main Page Wrapper ── */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--sp-8) var(--sp-8) 60px;
+}
+
+/* ── Section Title ── */
+.section-title {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: var(--sp-5);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  justify-content: center;
+}
+
+.section-title::before,
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--border));
+  max-width: 120px;
+}
+
+.section-title::after {
+  background: linear-gradient(to left, transparent, var(--border));
+}
+
+.section-gap { margin-bottom: 30px; }
+
+/* ── Grid Helpers ── */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.grid-2-1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 18px;
+}
+
+/* ── Signal Controller Grid ── */
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Site Footer ── */
+.site-footer {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  padding: var(--sp-5);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.site-footer span { color: var(--cyan); }
